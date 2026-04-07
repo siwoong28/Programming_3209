@@ -1,26 +1,25 @@
-function TodoListApp(){
+import './todolist.css';
+
+function TodoListApp() {
   return (
-    <>
-      <form action="">
-        <h1>ToDo ToDo</h1>
-          <input type="text" />
-          <button>Add</button>
-        <ul>
-          <li>
-            <input type="checkbox"/>
-            <label htmlFor="">옷싸기</label>
-            <button>수정</button>
-            <button>취소</button>
-          </li>
-          <li>
-            <input type="checkbox"/>
-            <label htmlFor="">잠자기</label>
-            <button>수정</button>
-            <button>취소</button>
-          </li>
-        </ul>
+    <div className='todo'>
+
+      <h1 className="todo__title">ToDo ToDo</h1>
+
+      <form action="" className='todo__form'>
+        <input type="text" className='todo__input' placeholder='할 일을 입력하세요.' />
+        <button type='submit' className='todo__button todo__button--add'>Add</button>
       </form>
-    </>
+
+      <ul className='todo__list'>
+        <li className='todo__item todo__item--complete'>
+          <input type="checkbox" className='todo__check' id='chk-1'/>
+          <label htmlFor="chk-1" className='todo__label'>옷싸기</label>
+          <button className='todo__button todo__button--edit'>수정</button>
+          <button className='todo__button todo__button--delete'>취소</button>
+        </li>
+      </ul>
+    </div>
   )
 }
 
