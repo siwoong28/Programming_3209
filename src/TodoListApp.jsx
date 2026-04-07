@@ -12,6 +12,9 @@ function TodoListApp() {
       </form>
 
       <ul className='todo__list'>
+        <li className='todo__item todo__item--empty'>
+          <p>할 일 없음</p>
+        </li>
         <li className='todo__item todo__item--complete'>
           <input type="checkbox" className='todo__check' id='chk-1'/>
           <label htmlFor="chk-1" className='todo__label'>옷싸기</label>
