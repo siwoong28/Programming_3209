@@ -1,5 +1,4 @@
 function Button(props){
-    console.log(props)
     const {children, ...rest} = props;
     
     return(
