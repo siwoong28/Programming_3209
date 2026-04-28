@@ -1,5 +1,5 @@
 //https://programming-3209.siwoong28.workers.dev/
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './todolist.css';
 import TodoHeader from './components/TodoHeader.jsx';
 import TodoAdder from './components/TodoAdder.jsx';
@@ -12,9 +12,22 @@ class Todo {
     this.isCompleted = isCompleted;
   }
 }
-
+const TODOS_STORAGE_KEY = "todos";//LocalStrage용 key
 function TodoListApp() {
-  const [todos, setTodos] = useState([]);
+  
+  const initTodos = () => {
+    //localStorage에서 가져오기
+    const savedTodos = localStorage.getItem(TODOS_STORAGE_KEY);
+    //값이 없으면 []
+    //값이 있으면 todos의 초기값 대입하자 
+    return (!savedTodos) ? [] :JSON.parse(savedTodos);
+  }
+  const [todos, setTodos] = useState(initTodos);
+  //todos변경 시, LocalStorage에 todos저장하자
+  useEffect(() => {
+    localStorage.setItem(TODOS_STORAGE_KEY,JSON.stringify(todos)); //JSON 객체 또는 리스트를 스트링으로
+  }, [todos]);
+
   function addTodo(text){
     //이전 todos에 newTodo 만들어서 추가하자 -> 그것을 setTodos()하자
     setTodos((todos) => [
@@ -52,7 +65,7 @@ function TodoListApp() {
   return (
     <div className='todo'>
       <TodoHeader />
-      <TodoAdder addTodo={addTodo} />
+      <TodoAdder addTodo={addTodo} />   
       <TodoList todos={todos} toggleTodo = {toggleTodo} deleteTodo={deleteTodo} editTodo={editTodo} />
     </div>
   )
