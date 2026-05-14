@@ -12,7 +12,7 @@ class Todo {
     this.isCompleted = isCompleted;
   }
 }
-const TODOS_STORAGE_KEY = "todos";//LocalStrage용 key
+const TODOS_STORAGE_KEY = "todos";//LocalStorage용 key
 function TodoListApp() {
   
   const initTodos = () => {
@@ -33,6 +33,7 @@ function TodoListApp() {
     setTodos((todos) => [
       ...todos,     //todos에 있는 item을 다 꺼내서 새로운 리스트에 하니씩 넣자
       new Todo(
+         
         Date.now(), //id : 고유 ID 시간을 이용. ==new Date().getTime()
         text,       //text : 할 일 내용
         false       //isCompleted : 할 일의 완료 여부. 초기값은 false
