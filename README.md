@@ -38,3 +38,4 @@ npm create vite@latest .
 - ```javascript
     <Link to ="/"></Link>
   ```
+  - `usenavige()`
